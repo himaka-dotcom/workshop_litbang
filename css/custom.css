@@ -124,11 +124,14 @@ body {
   text-transform: uppercase;
   color: var(--muted);
 }
+
 .mark {
+  display: inline-block;
   background: var(--accent);
   color: var(--accent-ink);
-  padding: 0 0.14em;
-  border-radius: 4px;
+  padding: 0.2 0.1em;
+  margin: 0 4px;
+  border-radius:0 4px;
   box-decoration-break: clone;
   -webkit-box-decoration-break: clone;
 }
