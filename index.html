@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="light">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Himaka - Workshop</title>
+  <meta name="description"
+    content="Panduan persiapan workshop untuk mahasiswa baru: instal VS Code, browser, Git, dan buat akun GitHub. Lengkap dengan checklist dan mini game." />
+  <meta name="theme-color" content="#f2ede2" />
+
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            paper: "var(--paper)",
+            surface: "var(--surface)",
+            surface2: "var(--surface-2)",
+            ink: "var(--ink)",
+            inksoft: "var(--ink-soft)",
+            muted: "var(--muted)",
+            line: "var(--line)",
+            linestrong: "var(--line-strong)",
+            primary: "var(--primary)",
+            primaryink: "var(--primary-ink)",
+            accent: "var(--accent)",
+            accentink: "var(--accent-ink)",
+            energy: "var(--energy)",
+          },
+          fontFamily: {
+            display: ['"Space Grotesk"', "system-ui", "sans-serif"],
+            body: ['"Plus Jakarta Sans"', "system-ui", "sans-serif"],
+            mono: ['"JetBrains Mono"', "ui-monospace", "monospace"],
+          },
+        },
+      },
+    };
+  </script>
+  <link rel="stylesheet" href="css/custom.css" />
+</head>
+
+<body class="bg-grain font-body">
+  <a href="#hero"
+    class="sr-only focus:not-sr-only focus:absolute focus:z-[100] focus:top-3 focus:left-3 focus:px-4 focus:py-2 focus:rounded-full"
+    style="background:var(--ink);color:var(--paper)">Lewati ke konten</a>
+
+  <div class="bg-atmos" aria-hidden="true"></div>
+
+  <!-- ============================ NAVBAR ============================ -->
+  <header class="fixed top-0 inset-x-0 z-50">
+    <div class="mx-auto max-w-[1180px] px-9 sm:px-6 pt-3">
+      <nav class="card card-flush flex items-center justify-between gap-3 px-5 sm:px-5 py-2"
+        style="background:color-mix(in srgb, var(--paper) 82%, transparent); backdrop-filter:blur(10px)">
+        <a href="#hero" class="flex items-center gap-3 no-underline text-ink">
+          <span class="w-9 h-9 grid place-items-center rounded-lg font-display font-bold text-sm"
+            style="background:var(--ink);color:var(--paper)">H</span>
+          <span class="hidden sm:block leading-tight">
+            <span class="block font-display font-bold tracking-tight text-[0.95rem]">Himpunana Mahasiswa
+              Informatika</span>
+            <span class="block font-mono text-[0.62rem] uppercase tracking-[0.2em]" style="color:var(--muted)">Devisi
+              Penelitian & Pengembangan</span>
+          </span>
+        </a>
+
+        <div class="hidden lg:flex items-center gap-6">
+          <a class="nav-link" data-nav href="#info">Info Acara</a>
+          <a class="nav-link" data-nav href="#roadmap">Roadmap</a>
+          <a class="nav-link" data-nav href="#tools">Panduan</a>
+          <a class="nav-link" data-nav href="#ekstensi">Ekstensi</a>
+          <a class="nav-link" data-nav href="#checklist">Checklist</a>
+          <a class="nav-link" data-nav href="#main">Zona Main</a>
+          <a class="nav-link" data-nav href="#faq">FAQ</a>
+        </div>
+
+        <div class="flex items-center gap-2">
+          <button id="theme-toggle" class="w-10 h-10 grid place-items-center rounded-full border-2"
+            style="border-color:var(--line-strong)" aria-label="Ganti tema terang/gelap">
+            <span id="icon-sun" class="w-5 h-5 block" data-ic="sun"></span>
+            <span id="icon-moon" class="w-5 h-5 block hidden" data-ic="moon"></span>
+          </button>
+          <a href="#checklist" class="btn btn-primary hidden sm:inline-flex !py-2.5">Mulai Persiapan <span
+              class="w-4 h-4 block" data-ic="arrow"></span></a>
+          <button id="nav-toggle" class="lg:hidden w-10 h-10 grid place-items-center rounded-full border-2"
+            style="border-color:var(--line-strong)" aria-label="Buka menu" aria-expanded="false">
+            <span id="icon-menu" class="w-5 h-5 block" data-ic="menu"></span>
+            <span id="icon-close" class="w-5 h-5 block hidden" data-ic="close"></span>
+          </button>
+        </div>
+      </nav>
+
+      <div id="mobile-menu" class="hidden lg:hidden card card-flush mt-2 p-3">
+        <div class="grid grid-cols-2 gap-1">
+          <a class="nav-link px-3 py-2 rounded-lg hover:bg-surface2" href="#info">Info Acara</a>
+          <a class="nav-link px-3 py-2 rounded-lg hover:bg-surface2" href="#roadmap">Roadmap</a>
+          <a class="nav-link px-3 py-2 rounded-lg hover:bg-surface2" href="#tools">Panduan</a>
+          <a class="nav-link px-3 py-2 rounded-lg hover:bg-surface2" href="#ekstensi">Ekstensi</a>
+          <a class="nav-link px-3 py-2 rounded-lg hover:bg-surface2" href="#checklist">Checklist</a>
+          <a class="nav-link px-3 py-2 rounded-lg hover:bg-surface2" href="#main">Zona Main</a>
+          <a class="nav-link px-3 py-2 rounded-lg hover:bg-surface2" href="#faq">FAQ</a>
+        </div>
+      </div>
+    </div>
+  </header>
+  <main class="pt-28 sm:pt-32">
+
+    <!-- ============================ HERO ============================ -->
+    <section id="hero" class="mx-auto max-w-[1180px] px-4 sm:px-6 pb-10 sm:pb-16">
+      <div class="grid lg:grid-cols-12 gap-8 lg:gap-10 items-center">
+        <div class="lg:col-span-7">
+          <div class="reveal" style="--d:0ms">
+            <span class="chip">
+              <span class="w-2 h-2 rounded-full" style="background:var(--energy)"></span>
+              <span id="hero-kicker">Workshop Himaka 2026</span>
+            </span>
+          </div>
+
+          <h1 class="headline mt-5 text-[3.3rem] leading-[0.95] sm:text-7xl lg:text-[5.4rem]">
+            <span class="reveal block" style="--d:60ms">Siap Ngoding</span>
+            <span class="reveal block" style="--d:150ms">Sebelum <span class="mark">Workshop 1</span></span>
+          </h1>
+
+          <p class="reveal mt-6 text-lg max-w-xl" style="--d:240ms; color:var(--ink-soft)">
+            Hai maba! 👋 Ada satu misi kecil sebelum workshop: install tools-nya dulu. Gampang kok, biar pas hari H kita langsung ngoding tanpa drama “kok punyaku error ya?”
+          </p>
+
+          <div class="reveal mt-8 flex flex-wrap gap-3 items-center" style="--d:320ms">
+            <a href="#checklist" class="btn btn-primary">Mulai Persiapan <span class="w-4 h-4 block"
+                data-ic="arrow"></span></a>
+            <a href="#tools" class="btn btn-ghost">Lihat Panduan Tools</a>
+          </div>
+
+          <div class="reveal mt-8 flex flex-wrap gap-2" style="--d:400ms">
+            <span class="chip">📅 <span>Sabtu, 14 Nov 2026</span></span>
+            <span class="chip">📍 <span>Laboratorium Lantai 5, Gedung Rektorat</span></span>
+            <span class="chip">⏱ <span>07.00–12.00 WIB</span></span>
+          </div>
+        </div>
+
+        <!-- kartu terminal dekoratif -->
+        <div class="lg:col-span-5 relative">
+          <div class="reveal" style="--d:260ms">
+            <div class="card overflow-hidden rotate-[0.6deg]"
+              style="background:#0c0d10;border-color:var(--line-strong)">
+              <div class="flex items-center gap-2 px-4 py-2.5"
+                style="background:#16181d;border-bottom:2px solid var(--line-strong)">
+                <span class="w-3 h-3 rounded-full" style="background:#ff5b3a"></span>
+                <span class="w-3 h-3 rounded-full" style="background:#d6f94e"></span>
+                <span class="w-3 h-3 rounded-full" style="background:#1f39ff"></span>
+                <span class="ml-2 font-mono text-xs opacity-60" style="color:#e8e6df">persiapan.sh</span>
+              </div>
+              <div class="p-5 font-mono text-sm space-y-2" style="color:#e8e6df">
+                <div><span class="term-prompt">$</span> install vscode browser git</div>
+                <div class="opacity-70">→ mengunduh… 100%</div>
+                <div><span class="term-prompt">$</span> git --version</div>
+                <div class="opacity-70">→ git version 2.45.1</div>
+                <div><span class="term-prompt">$</span> echo "siap!"</div>
+                <div style="color:var(--accent)">→ siap!<span class="cursor-blink">▌</span></div>
+              </div>
+            </div>
+
+            <div
+              class="absolute -bottom-5 -left-4 sm:-left-6 rotate-[-4deg] card hard-hover px-4 py-3 flex items-center gap-3">
+              <span class="w-8 h-8 grid place-items-center rounded-full"
+                style="background:var(--accent);color:var(--accent-ink)">
+                <span class="w-4 h-4 block" data-ic="check"></span>
+              </span>
+              <span class="font-display font-semibold text-sm leading-tight">Checklist<br />0 → 100%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="stats" class="mt-16 grid grid-cols-3 gap-6 max-w-2xl"></div>
+    </section>
+
+    <!-- ============================ MARQUEE ============================ -->
+    <div class="my-6 py-5 overflow-hidden"
+      style="border-top:2px solid var(--line-strong);border-bottom:2px solid var(--line-strong);background:var(--surface)">
+      <div class="marquee">
+        <div id="marquee-track" class="marquee-track items-center"></div>
+      </div>
+    </div>
+
+    <!-- ============================ INFO ACARA ============================ -->
+    <section id="info" class="mx-auto max-w-[1180px] px-4 sm:px-6 py-16 sm:py-24">
+      <div class="reveal mb-10 max-w-2xl">
+        <div class="section-no">01 — Info Acara</div>
+        <h2 class="headline mt-3 text-4xl sm:text-5xl">Hal yang perlu <span class="mark">kamu tahu!</span></h2>
+      </div>
+
+      <div id="event-info" class="grid sm:grid-cols-3 gap-5 mb-8"></div>
+
+      <div class="grid lg:grid-cols-2 gap-6">
+        <div class="card reveal p-6 sm:p-8" style="--d:80ms">
+          <div class="flex items-center gap-3 mb-5">
+            <span class="w-9 h-9 grid place-items-center rounded-lg"
+              style="background:var(--primary);color:var(--primary-ink)"><span class="w-5 h-5 block"
+                data-ic="bag"></span></span>
+            <h3 class="font-display text-xl font-semibold tracking-tight">Hal yang perlu kamu bawa </h3>
+          </div>
+          <ul id="event-bring" class="space-y-3"></ul>
+        </div>
+
+        <div class="card reveal p-6 sm:p-8" style="--d:160ms">
+          <div class="flex items-center gap-3 mb-3">
+            <span class="w-9 h-9 grid place-items-center rounded-lg"
+              style="background:var(--accent);color:var(--accent-ink)"><span class="w-5 h-5 block"
+                data-ic="chat"></span></span>
+            <h3 class="font-display text-xl font-semibold tracking-tight">Butuh bantuan?</h3>
+          </div>
+          <div id="event-contacts"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ ROADMAP ============================ -->
+    <section id="roadmap" class="mx-auto max-w-[1180px] px-4 sm:px-6 py-16 sm:py-24">
+      <div class="reveal mb-12 max-w-2xl">
+        <div class="section-no">02 — Roadmap Persiapan</div>
+        <h2 class="headline mt-3 text-4xl sm:text-5xl">Lima langkah, <span class="mark">berurutan</span></h2>
+        <p class="mt-4" style="color:var(--ink-soft)">Kerjakan dari atas ke bawah. Setiap langkah selesai, centang di
+          checklist nanti.</p>
+      </div>
+      <div id="roadmap-list" class="max-w-2xl"></div>
+    </section>
+
+    <!-- ============================ TOOLS ============================ -->
+    <section id="tools" class="mx-auto max-w-[1180px] px-4 sm:px-6 py-16 sm:py-24">
+      <div class="reveal mb-8 max-w-2xl">
+        <div class="section-no">03 — Panduan per Tools</div>
+        <h2 class="headline mt-3 text-4xl sm:text-5xl">Pasang sesuai <span class="mark">sistem operasi</span></h2>
+        <p class="mt-4" style="color:var(--ink-soft)">Pilih OS-mu dulu, langkahnya otomatis menyesuaikan. Klik kartu
+          untuk membuka panduan.</p>
+      </div>
+
+      <div class="reveal card card-flush p-2 inline-flex flex-wrap gap-1 mb-6" id="os-tabs" role="tablist"
+        aria-label="Pilih sistem operasi"></div>
+
+      <div id="tools-list" class="grid gap-4"></div>
+    </section>
+
+    <!-- ============================ EKSTENSI ============================ -->
+    <section id="ekstensi" class="mx-auto max-w-[1180px] px-4 sm:px-6 py-16 sm:py-24">
+      <div class="reveal mb-8 max-w-2xl">
+        <div class="section-no">04 — Ekstensi VS Code</div>
+        <h2 class="headline mt-3 text-4xl sm:text-5xl">Ekstensi yang perlu <span class="mark">di-install</span></h2>
+        <p class="mt-4" style="color:var(--ink-soft)">Ekstensi adalah tambahan kecil yang membuat VS Code lebih pintar
+          dan menghemat waktumu. Semua dipasang dari dalam VS Code, tanpa unduh dari web.</p>
+      </div>
+
+      <div id="extensions-list" class="grid gap-4"></div>
+    </section>
+
+    <!-- ============================ CHECKLIST ============================ -->
+    <section id="checklist" class="mx-auto max-w-[1180px] px-4 sm:px-6 py-16 sm:py-24">
+      <div class="reveal mb-10 max-w-2xl">
+        <div class="section-no">05 — Checklist Kesiapan</div>
+        <h2 class="headline mt-3 text-4xl sm:text-5xl">Centang, <span class="mark">tersimpan</span> otomatis</h2>
+        <p class="mt-4" style="color:var(--ink-soft)">Progresmu disimpan di browser ini. Tutup web, buka lagi, tidak
+          akan hilang.</p>
+      </div>
+
+      <div class="grid lg:grid-cols-12 gap-8">
+        <div class="lg:col-span-7 space-y-3" id="checklist-list"></div>
+
+        <div class="lg:col-span-5">
+          <div class="card reveal p-6 sm:p-8 lg:sticky lg:top-28 text-center" style="--d:100ms">
+            <div class="relative w-44 h-44 mx-auto">
+              <svg viewBox="0 0 120 120" class="w-44 h-44 -rotate-90">
+                <circle cx="60" cy="60" r="52" fill="none" stroke-width="10" class="ring-track" />
+                <circle id="ring-fill" cx="60" cy="60" r="52" fill="none" stroke-width="10" class="ring-fill" />
+              </svg>
+              <div class="absolute inset-0 grid place-items-center">
+                <div>
+                  <div id="progress-pill" class="font-display text-4xl font-bold tracking-tight">0%</div>
+                  <div class="font-mono text-[0.66rem] uppercase tracking-widest" style="color:var(--muted)">selesai
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="mt-4 font-display text-xl font-semibold">Kesiapan kamu</div>
+            <div class="mt-1" style="color:var(--ink-soft)"><span id="progress-text">0 / 0</span> langkah beres</div>
+            <button id="reset-checklist" class="btn btn-ghost mt-6 w-full justify-center">Reset checklist</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ ZONA MAIN ============================ -->
+    <section id="main" class="mx-auto max-w-[1180px] px-4 sm:px-6 py-16 sm:py-24">
+      <div class="reveal mb-10 max-w-2xl">
+        <div class="section-no">06 — Zona Main</div>
+        <h2 class="headline mt-3 text-4xl sm:text-5xl">Sambil nunggu, <span class="mark">main dulu</span></h2>
+        <p class="mt-4" style="color:var(--ink-soft)">Dua mini game ringan biar kepalamu tetap semangat. Skormu disimpan
+          lokal, bukan online.</p>
+      </div>
+
+      <div class="grid lg:grid-cols-2 gap-6 items-start">
+        <div class="reveal">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="w-10 h-10 grid place-items-center rounded-xl"
+              style="background:var(--primary);color:var(--primary-ink)"><span class="w-5 h-5 block"
+                data-ic="spark"></span></span>
+            <div>
+              <h3 class="font-display text-xl font-semibold tracking-tight">Kuis: Sudah Siap Belum?</h3>
+              <div class="font-mono text-[0.68rem] uppercase tracking-widest" style="color:var(--muted)">6 pertanyaan
+              </div>
+            </div>
+          </div>
+          <div id="quiz-app"></div>
+        </div>
+
+        <div class="reveal" style="--d:120ms">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="w-10 h-10 grid place-items-center rounded-xl"
+              style="background:var(--accent);color:var(--accent-ink)"><span class="w-5 h-5 block"
+                data-ic="terminal"></span></span>
+            <div>
+              <h3 class="font-display text-xl font-semibold tracking-tight">Terminal Mini</h3>
+              <div class="font-mono text-[0.68rem] uppercase tracking-widest" style="color:var(--muted)">coba perintah
+                dasar</div>
+            </div>
+          </div>
+          <div id="terminal-app"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ FAQ ============================ -->
+    <section id="faq" class="mx-auto max-w-[1180px] px-4 sm:px-6 py-16 sm:py-24">
+      <div class="reveal mb-10 max-w-2xl">
+        <div class="section-no">07 — FAQ & Troubleshooting</div>
+        <h2 class="headline mt-3 text-4xl sm:text-5xl">Masih Bingung? <span class="mark">FAQ</span></h2>
+      </div>
+      <div id="faq-list" class="max-w-3xl space-y-3"></div>
+
+      <div
+        class="reveal card hard-hover mt-10 p-6 sm:p-8 flex flex-col sm:flex-row items-start sm:items-center gap-5 justify-between"
+        style="background:var(--ink);color:var(--paper);border-color:var(--line-strong)">
+        <div>
+          <h3 class="font-display text-2xl font-semibold tracking-tight">Masih bingung?</h3>
+          <p class="mt-1 opacity-80">Tanya langsung ke panitia, jangan ditahan sampai hari-H ya.</p>
+        </div>
+        <a href="https://wa.me/628120000000" target="_blank" rel="noopener" class="btn btn-accent flex-none">Chat
+          Panitia</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============================ FOOTER ============================ -->
+  <footer class="mt-8" style="border-top:2px solid var(--line-strong);background:var(--surface)">
+    <div class="mx-auto max-w-[1180px] px-4 sm:px-6 py-12">
+      <div class="grid sm:grid-cols-3 gap-8">
+        <div>
+          <div class="flex items-center gap-3">
+            <span class="w-9 h-9 grid place-items-center rounded-lg font-display font-bold text-sm"
+              style="background:var(--ink);color:var(--paper)">H</span>
+            <div class="leading-tight">
+              <div class="font-display font-bold tracking-tight">Himpunan Mahasiswa Informatika</div>
+              <div class="font-mono text-[0.62rem] uppercase tracking-[0.2em]" style="color:var(--muted)">Devisi Penelitian &
+                Pengembangan</div>
+            </div>
+          </div>
+          <p class="mt-4 text-sm" style="color:var(--ink-soft)">DIbuat untuk mempersiapkan workshop</p>
+        </div>
+        <div>
+          <div class="font-mono text-[0.7rem] uppercase tracking-widest mb-3" style="color:var(--muted)">Navigasi</div>
+          <div class="grid grid-cols-2 gap-1 text-sm">
+            <a class="nav-link" href="#info">Info Acara</a>
+            <a class="nav-link" href="#roadmap">Roadmap</a>
+            <a class="nav-link" href="#tools">Panduan</a>
+            <a class="nav-link" href="#ekstensi">Ekstensi</a>
+            <a class="nav-link" href="#checklist">Checklist</a>
+            <a class="nav-link" href="#main">Zona Main</a>
+            <a class="nav-link" href="#faq">FAQ</a>
+          </div>
+        </div>
+        <div>
+          <div class="font-mono text-[0.7rem] uppercase tracking-widest mb-3" style="color:var(--muted)">Kontak</div>
+          <a class="nav-link block text-sm" href="https://wa.me/628120000000" target="_blank" rel="noopener">WhatsApp
+            Panitia</a>
+          <a class="nav-link block text-sm mt-1" href="https://www.instagram.com/himaka.umpo?obrf=MTg3MXdsY2Zhamg2bQ==" target="_blank" rel="noopener">Instagram
+            Himaka</a>
+        </div>
+      </div>
+      <div class="rule my-8"></div>
+      <div class="flex flex-col sm:flex-row justify-between gap-2 font-mono text-[0.7rem]" style="color:var(--muted)">
+        <span>© <span id="footer-year">2026</span> HIMAKA · Divisi Penelitian & Pengembangan</span>
+        <span>Universitas Muhammadiyah Ponorogo</span>
+      </div>
+    </div>
+  </footer>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js" defer></script>
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/games.js"></script>
+</body>
+
+</html>
