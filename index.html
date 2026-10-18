@@ -8,15 +8,12 @@
   <meta name="description"
     content="Panduan persiapan workshop untuk mahasiswa baru: instal VS Code, browser, Git, dan buat akun GitHub. Lengkap dengan checklist dan mini game." />
   <meta name="theme-color" content="#f2ede2" />
-
-  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg" />
-
+  <link rel="icon" type="image" href="assets/img/logo.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
     href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
     rel="stylesheet" />
-
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -62,8 +59,11 @@
       <nav class="card card-flush flex items-center justify-between gap-3 px-5 sm:px-5 py-2"
         style="background:color-mix(in srgb, var(--paper) 82%, transparent); backdrop-filter:blur(10px)">
         <a href="#hero" class="flex items-center gap-3 no-underline text-ink">
-          <span class="w-9 h-9 grid place-items-center rounded-lg font-display font-bold text-sm"
-            style="background:var(--ink);color:var(--paper)">H</span>
+          <span class="flex-none w-9 h-9 grid place-items-center rounded-lg overflow-hidden"
+            style="background:var(--surface);border:1.5px solid var(--line)">
+            <img src="assets/img/logo.png" alt="Logo Himaka" width="36" height="36"
+              class="w-full h-full object-contain p-0.5" />
+          </span>
           <span class="hidden sm:block leading-tight">
             <span class="block font-display font-bold tracking-tight text-[0.95rem]">Himpunana Mahasiswa
               Informatika</span>
@@ -72,10 +72,11 @@
           </span>
         </a>
 
-        <div class="hidden lg:flex items-center gap-6">
+        <div class="hidden lg:flex items-center gap-5">
           <a class="nav-link" data-nav href="#info">Info Acara</a>
           <a class="nav-link" data-nav href="#roadmap">Roadmap</a>
           <a class="nav-link" data-nav href="#tools">Panduan</a>
+          <a class="nav-link" data-nav href="#video">Video Tutorial</a>
           <a class="nav-link" data-nav href="#ekstensi">Ekstensi</a>
           <a class="nav-link" data-nav href="#checklist">Checklist</a>
           <a class="nav-link" data-nav href="#main">Zona Main</a>
@@ -103,6 +104,7 @@
           <a class="nav-link px-3 py-2 rounded-lg hover:bg-surface2" href="#info">Info Acara</a>
           <a class="nav-link px-3 py-2 rounded-lg hover:bg-surface2" href="#roadmap">Roadmap</a>
           <a class="nav-link px-3 py-2 rounded-lg hover:bg-surface2" href="#tools">Panduan</a>
+          <a class="nav-link px-3 py-2 rounded-lg hover:bg-surface2" href="#video">Video Tutorial</a>
           <a class="nav-link px-3 py-2 rounded-lg hover:bg-surface2" href="#ekstensi">Ekstensi</a>
           <a class="nav-link px-3 py-2 rounded-lg hover:bg-surface2" href="#checklist">Checklist</a>
           <a class="nav-link px-3 py-2 rounded-lg hover:bg-surface2" href="#main">Zona Main</a>
@@ -139,7 +141,7 @@
             <a href="#checklist" class="btn btn-primary">Mulai Persiapan <span class="w-4 h-4 block"
                 data-ic="arrow"></span></a>
             <a href="#tools" class="btn btn-ghost">Lihat Panduan Tools</a>
-            <a href="" class="btn btn-ghost">Workshop 2</a>
+            <a href="workshop-2.html" class="btn btn-ghost">Workshop 2</a>
           </div>
 
           <div class="reveal mt-8 flex flex-wrap gap-2" style="--d:400ms">
@@ -178,6 +180,19 @@
                 <span class="w-4 h-4 block" data-ic="check"></span>
               </span>
               <span class="font-display font-semibold text-sm leading-tight">Checklist<br />0 → 100%</span>
+            </div>
+          </div>
+
+          <!-- kartu countdown menuju hari-H -->
+          <div class="reveal mt-12 sm:mt-14" style="--d:380ms">
+            <div class="card hard-hover p-5 sm:p-6" aria-label="Hitung mundur menuju Workshop 1">
+              <div class="flex items-center gap-2.5 mb-4">
+                <span class="w-2 h-2 rounded-full" style="background:var(--energy)"></span>
+                <span class="font-mono text-[0.68rem] uppercase tracking-widest" style="color:var(--muted)">Countdown to
+                  the big day</span>
+              </div>
+              <div id="countdown-grid" class="grid grid-cols-4 gap-2 sm:gap-3" aria-hidden="true"></div>
+              <div id="countdown-note" class="mt-4 text-center font-mono text-xs" style="color:var(--ink-soft)"></div>
             </div>
           </div>
         </div>
@@ -252,10 +267,23 @@
       <div id="tools-list" class="grid gap-4"></div>
     </section>
 
+    <!-- ============================ VIDEO TUTORIAL============================ -->
+    <section class="mx-auto max-w-[1180px] px-4 sm-px6 py-6 sm-py-24" id="video">
+      <div class="reveal mb-10 max-w-2xl">
+        <div class="seaction-no"> 04 - Video Tutorial</div>
+        <h2 class="headline mt-3 text-4xl sm:text-5xl">Masih bingung? <span class="mark">kamu bisa nonton ini</span>
+        </h2>
+        <p class="mt-4" style="color:var(--ink-soft)">Video instalasi singkat biar tidak salah klik. Tonton sambil
+          praktik di laptopmu.</p>
+      </div>
+      <div id="video-list" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5"></div>
+      <div id="video-pager" class="mt-8 hidden flex items-center justify-center gap-3"></div>
+    </section>
+
     <!-- ============================ EKSTENSI ============================ -->
     <section id="ekstensi" class="mx-auto max-w-[1180px] px-4 sm:px-6 py-16 sm:py-24">
       <div class="reveal mb-8 max-w-2xl">
-        <div class="section-no">04 — Ekstensi VS Code</div>
+        <div class="section-no">05 — Ekstensi VS Code</div>
         <h2 class="headline mt-3 text-4xl sm:text-5xl">Ekstensi yang perlu <span class="mark">di-install</span></h2>
         <p class="mt-4" style="color:var(--ink-soft)">Ekstensi adalah tambahan kecil yang membuat VS Code lebih pintar
           dan menghemat waktumu. Semua dipasang dari dalam VS Code, tanpa unduh dari web.</p>
@@ -267,8 +295,9 @@
     <!-- ============================ CHECKLIST ============================ -->
     <section id="checklist" class="mx-auto max-w-[1180px] px-4 sm:px-6 py-16 sm:py-24">
       <div class="reveal mb-10 max-w-2xl">
-        <div class="section-no">05 — Checklist Kesiapan</div>
-        <h2 class="headline mt-3 text-4xl sm:text-5xl">Centang, <span class="mark">tersimpan</span> otomatis</h2>
+        <div class="section-no">06 — Checklist Kesiapan</div>
+        <h2 class="headline mt-3 text-4xl sm:text-5xl">Centang, misi yang udah <span class="mark">kamu kerjain
+            yuk</span></h2>
         <p class="mt-4" style="color:var(--ink-soft)">Progresmu disimpan di browser ini. Tutup web, buka lagi, tidak
           akan hilang.</p>
       </div>
@@ -302,7 +331,7 @@
     <!-- ============================ ZONA MAIN ============================ -->
     <section id="main" class="mx-auto max-w-[1180px] px-4 sm:px-6 py-16 sm:py-24">
       <div class="reveal mb-10 max-w-2xl">
-        <div class="section-no">06 — Zona Main</div>
+        <div class="section-no">07 — Zona Main</div>
         <h2 class="headline mt-3 text-4xl sm:text-5xl">Sambil nunggu, <span class="mark">main dulu</span></h2>
         <p class="mt-4" style="color:var(--ink-soft)">Dua mini game ringan biar kepalamu tetap semangat. Skormu disimpan
           lokal, bukan online.</p>
@@ -342,7 +371,7 @@
     <!-- ============================ FAQ ============================ -->
     <section id="faq" class="mx-auto max-w-[1180px] px-4 sm:px-6 py-16 sm:py-24">
       <div class="reveal mb-10 max-w-2xl">
-        <div class="section-no">07 — FAQ & Troubleshooting</div>
+        <div class="section-no">08 — FAQ & Troubleshooting</div>
         <h2 class="headline mt-3 text-4xl sm:text-5xl">Masih Bingung? <span class="mark">FAQ</span></h2>
       </div>
       <div id="faq-list" class="max-w-3xl space-y-3"></div>
@@ -366,8 +395,11 @@
       <div class="grid sm:grid-cols-3 gap-8">
         <div>
           <div class="flex items-center gap-3">
-            <span class="w-9 h-9 grid place-items-center rounded-lg font-display font-bold text-sm"
-              style="background:var(--ink);color:var(--paper)">H</span>
+            <span class="flex-none w-9 h-9 grid place-items-center rounded-lg overflow-hidden"
+              style="background:var(--surface);border:1.5px solid var(--line)">
+              <img src="assets/img/logo.png" alt="Logo Himaka" width="36" height="36"
+                class="w-full h-full object-contain p-0.5" />
+            </span>
             <div class="leading-tight">
               <div class="font-display font-bold tracking-tight">Himpunan Mahasiswa Informatika</div>
               <div class="font-mono text-[0.62rem] uppercase tracking-[0.2em]" style="color:var(--muted)">Devisi

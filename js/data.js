@@ -7,8 +7,8 @@
 const ICONS = {
   vscode:
     '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3 8.5 11 5 8.2 3 9.2l2.5 2.8L3 14.8l2 1 3.5-2.8L17 21l4-1.8V4.8L17 3Z"/><path d="M17 8.4v7.2"/></svg>',
-  extensionIconSvg :
-   '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3 8.5 11 5 8.2 3 9.2l2.5 2.8L3 14.8l2 1 3.5-2.8L17 21l4-1.8V4.8L17 3Z"/><path d="M17 8.4v7.2"/></svg>',
+  extensionIconSvg:
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3 8.5 11 5 8.2 3 9.2l2.5 2.8L3 14.8l2 1 3.5-2.8L17 21l4-1.8V4.8L17 3Z"/><path d="M17 8.4v7.2"/></svg>',
   browser:
     '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.4 2.5 15.6 0 18M12 3c-2.5 2.4-2.5 15.6 0 18"/></svg>',
   git:
@@ -67,6 +67,69 @@ const CONTENT = {
     year: "2026/2027",
   },
 
+  videos: [
+    {
+      id: "vscode-windowns",
+      title: "Cara install Visual Studio Code",
+      tagline: "Unduh Installer, centang Add to Path, selesai",
+      badge: "Windows",
+      url: "https://youtu.be/kQl8ugdcZCc?si=DTVtWfmDhAdK2yyE"
+    },
+    {
+      id: "git",
+      title: "Cara install git dan git bash",
+      tagline: "Unduh Installer, centang Add to Path, selesai",
+      badge: "Windows",
+      url: "https://youtu.be/IigslfdR7vI?si=Ags49yfyy4Y3fwNo"
+    },
+    {
+      id: "github",
+      title: "Cara buat akun github",
+      tagline: "Unduh Installer, centang Add to Path, selesai",
+      badge: "Windows",
+      url: "https://youtu.be/HuoAiLFIXSg?si=y6Bg2wfxAnLL3ucu"
+    },
+    {
+      id: "live-server",
+      title: "Cara install ekstension Live Server",
+      tagline: "Unduh Installer, centang Add to Path, selesai",
+      badge: "Windows",
+      url: "https://youtu.be/G52TZnx11I4?si=AI7qeltH5OoUmpN8"
+    },
+    {
+      id: "prettier",
+      title: "Cara install ekstension Prettier",
+      tagline: "Unduh Installer, centang Add to Path, selesai",
+      badge: "Windows",
+      url: "https://youtu.be/a7gPBnmRUTI?si=SVAAnZDEFw5mzTXg"
+    }, {
+      id: "eror-lens",
+      title: "Cara install ekstension Error Lens",
+      tagline: "Unduh Installer, centang Add to Path, selesai",
+      badge: "All Device",
+      url: "https://youtu.be/szR4QsHkdFY?si=CICcCgI4uW6i4src"
+    }, {
+      id: "material-icons",
+      title: "Cara install ekstension Material Icon",
+      tagline: "Unduh Installer, centang Add to Path, selesai",
+      badge: "All Device",
+      url: "https://youtu.be/p_lmSfrpGW8?si=qFylECFxi6MvxIsu"
+    }, {
+      id: "git-lens",
+      title: "Cara install ekstension Git Lens",
+      tagline: "Unduh Installer, centang Add to Path, selesai",
+      badge: "All Device",
+      url: "https://youtu.be/UQPb73Zz9qk?si=9x2v3R0YODA5WI2h"
+    },
+    {
+      id: "lagu-fav-admin",
+      title: "About You",
+      tagline: "Lagu Fav admin, kalau lagu fav kamu apa?",
+      badge: "-",
+      url: "https://youtu.be/tGv7CUutzqU?si=1a-n2QYbqu_L2gXz"
+    }
+  ],
+
   event: {
     kicker: "Workshop Maba 2026",
     title: "Ngoding Pertama",
@@ -75,6 +138,7 @@ const CONTENT = {
       "Siapkan laptopmu sebelum hari-H. Panduan singkat, checklist berprogres, dan sedikit main — biar workshop lancar, bukan molor.",
     date: "Sabtu, 14 November 2026",
     time: "07.00 – 12.00 WIB",
+    startISO: "2026-11-14T07:00:00+07:00", // WIB — dipakai countdown hari-H
     place: "Laboratorium Lantai 5, Gedung Rektorat",
     bring: [
       "Laptop + charger",
@@ -142,7 +206,12 @@ const CONTENT = {
       icon: "vscode",
       tagline: "Tempat kamu menulis dan menjalankan kode.",
       why: "Kami merekomendasikan VS Code sebagai code editor gratis dari Microsoft. Ringan, banyak ekstensi, dan paling umum dipakai saat praktikum.",
-      downloadUrl: "https://code.visualstudio.com/download",
+      // downloadUrl: "https://code.visualstudio.com/download",
+      downloads: {
+        windows: { url: "https://code.visualstudio.com/thank-you?dv=win&build=stable&v2=true", label: "Unduh VSCode untuk windows" },
+        macos: { url: "https://code.visualstudio.com/thank-you?dv=osx&build=stable&v2=true", label: "Unduh VSCode untuk macOS" },
+        linux: { url: "https://code.visualstudio.com/thank-you?dv=linux64_deb&build=stable&v2=true", label: "Unduh VsCode untuk Linux (.deb)" }
+      },
       downloadLabel: "code.visualstudio.com/download",
       steps: {
         windows: [
@@ -166,7 +235,7 @@ const CONTENT = {
         note: "Muncul nomor versi di terminal? Berarti VS Code sudah bisa dipanggil dari mana saja.",
       },
     },
-      {
+    {
       id: "browser",
       name: "Browser Modern",
       badge: "Wajib",
@@ -201,6 +270,11 @@ const CONTENT = {
     {
       id: "git",
       name: "Git",
+      downloads: {
+        windows: { url: "https://git-scm.com/install/windows", label: "Unduh Git Untuk Windows", },
+        macos: { url: "https://git-scm.com/install/mac", label: "Unduh Git untuk MacOs" },
+        linux: { url: "https://git-scm.com/install/linux", label: "Unduh Git Untuk Linux" }
+      },
       badge: "Wajib",
       icon: "git",
       tagline: "Pencatat riwayat perubahan kodemu.",
@@ -262,37 +336,37 @@ const CONTENT = {
     },
   ],
 
-  ekstensi :[{
-      id: "browser",
-      name: "Browser Modern",
-      badge: "Wajib",
-      icon: "browser",
-      tagline: "Chrome atau Firefox — pintu masuk ke dokumentasi.",
-      why: "Workshop memakai Google Docs, GitHub, dan dokumentasi online. Browser lawas sering gagal menampilkan halaman modern.",
-      downloadUrl: "https://www.google.com/chrome/",
-      downloadLabel: "google.com/chrome",
-      altLink: { url: "https://www.mozilla.org/firefox/new/", label: "atau mozilla.org/firefox" },
-      steps: {
-        windows: [
-          "Buka google.com/chrome atau mozilla.org/firefox.",
-          "Klik Unduh dan jalankan installer.",
-          "Tunggu selesai, browser terbuka otomatis.",
-        ],
-        macos: [
-          "Buka google.com/chrome atau mozilla.org/firefox.",
-          "Buka file .dmg dan seret ikon ke folder Applications.",
-          "Buka dari Launchpad saat selesai.",
-        ],
-        linux: [
-          "Chrome: unduh .deb dari google.com/chrome lalu sudo dpkg -i google-chrome*.deb.",
-          "Firefox: biasanya sudah terpasang, atau pasang via paket manager distromu.",
-          "Alternatif cepat: sudo snap install firefox",
-        ],
-      },
-      verify: {
-        command: "navigator.userAgent",
-        note: "Buka Console (F12) dan ketik ini — kalau versinya baru, aman.",
-      },
+  ekstensi: [{
+    id: "browser",
+    name: "Browser Modern",
+    badge: "Wajib",
+    icon: "browser",
+    tagline: "Chrome atau Firefox — pintu masuk ke dokumentasi.",
+    why: "Workshop memakai Google Docs, GitHub, dan dokumentasi online. Browser lawas sering gagal menampilkan halaman modern.",
+    downloadUrl: "https://www.google.com/chrome/",
+    downloadLabel: "google.com/chrome",
+    altLink: { url: "https://www.mozilla.org/firefox/new/", label: "atau mozilla.org/firefox" },
+    steps: {
+      windows: [
+        "Buka google.com/chrome atau mozilla.org/firefox.",
+        "Klik Unduh dan jalankan installer.",
+        "Tunggu selesai, browser terbuka otomatis.",
+      ],
+      macos: [
+        "Buka google.com/chrome atau mozilla.org/firefox.",
+        "Buka file .dmg dan seret ikon ke folder Applications.",
+        "Buka dari Launchpad saat selesai.",
+      ],
+      linux: [
+        "Chrome: unduh .deb dari google.com/chrome lalu sudo dpkg -i google-chrome*.deb.",
+        "Firefox: biasanya sudah terpasang, atau pasang via paket manager distromu.",
+        "Alternatif cepat: sudo snap install firefox",
+      ],
+    },
+    verify: {
+      command: "navigator.userAgent",
+      note: "Buka Console (F12) dan ketik ini — kalau versinya baru, aman.",
+    },
   }],
   extensions: [
     {

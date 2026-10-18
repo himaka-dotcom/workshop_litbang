@@ -1,7 +1,3 @@
-
-
-
-
 /* =========================================================================
    main.js — navigasi, tema, animasi scroll, render konten, checklist
    ========================================================================= */
@@ -313,12 +309,20 @@ function downloadButton(url, label) {
 }
 
 /* ------- Kartu spesifik: tools (per OS) & ekstensi (flat) -------- */
+function getDonwload(tool, os) {
+  if (tool.downloads) {
+    return tool.downloads[os] || tool.downloads.windows || Object.values(tool.downloads)[0];
+  }
+  return { url: tool.downloadUrl, label: tool.downloadLabel };
+}
+
 function toolCard(tool, os) {
+  const dl = getDonwload(tool, os)
   const body = `
     <p class="mb-4" style="color:var(--ink-soft)">${tool.why}</p>
     ${stepsBlock(tool.steps[os], { verify: tool.verify, label: `Langkah instal · ${OS_LABEL[os]}` })}
     <div class="mt-5 flex flex-wrap gap-3">
-      ${downloadButton(tool.downloadUrl, tool.downloadLabel)}
+      ${downloadButton(dl.url, dl.label)}
       ${tool.altLink ? `<a class="btn btn-ghost" href="${tool.altLink.url}" target="_blank" rel="noopener">${tool.altLink.label}</a>` : ""}
     </div>`;
   return accordionCard({ id: tool.id, icon: tool.icon, name: tool.name, badge: tool.badge, tagline: tool.tagline, bodyHtml: body });
@@ -484,6 +488,84 @@ function celebrate() {
   }
 }
 
+/* ---------------------- Render: Video ------------------------ */
+function getYoutubeId(url) {
+  const m = url.match(/(?:youtu\.be\/|v=|shorts\/|embed\/)([\w-]{11})/);
+  return m ? m[1] : null;
+}
+
+function videoCard(v) {
+  const yt = getYoutubeId(v.url);
+  const thumb = yt
+    ? `<img src="https://img.youtube.com/vi/${yt}/hqdefault.jpg" alt="${v.title}"
+         class="absolute inset-0 w-full h-full object-cover" loading="lazy">
+       <span class="absolute inset-0 grid place-items-center" style="background:rgba(0,0,0,.35)">
+         <span class="w-14 h-14 rounded-full grid place-items-center" style="background:var(--primary);color:var(--primary-ink)">
+           <svg viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 translate-x-0.5"><path d="M8 5v14l11-7z"/></svg>
+         </span>
+       </span>`
+    : `<span class="absolute inset-0 grid place-items-center" style="color:var(--muted)">Video tidak tersedia</span>`;
+  return `
+    <a href="${v.url}" target="_blank" rel="noopener"
+       class="card hard-hover overflow-hidden reveal no-underline">
+      <div class="relative aspect-video" style="background:var(--surface-2)">${thumb}</div>
+      <div class="p-5">
+        <span class="chip !py-0.5 !text-[0.62rem]">${v.badge}</span>
+        <h3 class="font-display text-lg font-semibold tracking-tight mt-2" style="color:var(--ink)">${v.title}</h3>
+        <p class="text-sm mt-1" style="color:var(--ink-soft)">${v.tagline}</p>
+      </div>
+    </a>`;
+}
+
+const MQ_DESKTOP = window.matchMedia("(min-width: 640px)");
+const perPage = () => (MQ_DESKTOP.matches ? 6 : 3);
+
+function renderVideos() {
+  const wrap = $("#video-list");
+  const pager = $("#video-pager");
+  if (!wrap || !Array.isArray(CONTENT.videos) || !CONTENT.videos.length) return;
+
+  const list = CONTENT.videos;
+  let current = 1;
+
+  const renderPage = () => {
+    const size = perPage();
+    const pages = Math.max(1, Math.ceil(list.length / size));
+    current = Math.min(Math.max(current, 1), pages);
+
+    wrap.innerHTML = list
+      .slice((current - 1) * size, current * size)
+      .map(videoCard)
+      .join("");
+    observeReveal(wrap);
+
+    if (!pager) return;
+    if (pages <= 1) { pager.classList.add("hidden"); return; }
+    pager.classList.remove("hidden");
+    pager.innerHTML = `
+      <button class="btn btn-ghost" data-page="prev" ${current === 1 ? "disabled" : ""}>‹ Sebelumnya</button>
+      <span class="font-mono text-xs uppercase tracking-widest" style="color:var(--muted)">
+        Halaman ${current} / ${pages}
+      </span>
+      <button class="btn btn-ghost" data-page="next" ${current === pages ? "disabled" : ""}>Berikutnya ›</button>`;
+
+    $$("[data-page]", pager).forEach((btn) =>
+      btn.addEventListener("click", () => {
+        current += btn.dataset.page === "next" ? 1 : -1;
+        renderPage();
+        wrap.scrollIntoView({ behavior: "smooth", block: "start" });
+      })
+    );
+  };
+
+  MQ_DESKTOP.addEventListener("change", () => {
+    current = 1;
+    renderPage();
+  });
+
+  renderPage();
+}
+
 /* -------------------------- Render: FAQ -------------------------- */
 function renderFaq() {
   const wrap = $("#faq-list");
@@ -504,6 +586,86 @@ function renderFaq() {
     .join("");
 }
 
+/* ---------------------- Render: Countdown ------------------------ */
+function renderCountdown() {
+  const grid = $("#countdown-grid");
+  const note = $("#countdown-note");
+  if (!grid || !note) return;
+
+  const target = new Date(CONTENT.event.startISO);
+  if (Number.isNaN(target.getTime())) return;
+
+  const UNITS = [
+    { key: "d", label: "Hari" },
+    { key: "h", label: "Jam" },
+    { key: "m", label: "Menit" },
+    { key: "s", label: "Detik" },
+  ];
+  const pad2 = (n) => String(n).padStart(2, "0");
+
+  grid.innerHTML = UNITS.map(
+    (u) => `
+    <div class="text-center py-3 sm:py-4 rounded-[var(--radius)]"
+      style="background:var(--surface-2);border:1.5px solid var(--line)">
+      <div class="font-display text-2xl sm:text-4xl font-bold tracking-tight tabular-nums"
+        data-cd="${u.key}" style="color:var(--ink)">00</div>
+      <div class="font-mono text-[0.62rem] uppercase tracking-widest mt-1"
+        style="color:var(--muted)">${u.label}</div>
+    </div>`
+  ).join("");
+  note.textContent = `Menuju Workshop 1 · ${CONTENT.event.date} · ${CONTENT.event.time}`;
+
+  const finish = () => {
+    grid.classList.add("hidden");
+    const live = new Date();
+    const sameDay =
+      live.getFullYear() === target.getFullYear() &&
+      live.getMonth() === target.getMonth() &&
+      live.getDate() === target.getDate();
+    note.innerHTML = sameDay
+      ? `<span class="font-display text-lg font-semibold" style="color:var(--accent-ink);background:var(--accent);padding:0.2em 0.5em;border-radius:8px">Hari-H sudah tiba! 🎉</span>
+         <div class="mt-2">Sampai jumpa di Laboratorium Lantai 5.</div>`
+      : `<span class="font-display text-lg font-semibold" style="color:var(--ink)">Workshop 1 sudah selesai</span>
+         <div class="mt-2">Sampai jumpa di Workshop 2!</div>`;
+  };
+
+  const cells = {};
+  UNITS.forEach((u) => (cells[u.key] = $(`[data-cd="${u.key}"]`, grid)));
+
+  let timer = null;
+  let done = false;
+  const tick = () => {
+    const diff = target.getTime() - Date.now();
+    if (diff <= 0) {
+      done = true;
+      clearInterval(timer);
+      timer = null;
+      finish();
+      return;
+    }
+    cells.d.textContent = pad2(Math.floor(diff / 86400000));
+    cells.h.textContent = pad2(Math.floor(diff / 3600000) % 24);
+    cells.m.textContent = pad2(Math.floor(diff / 60000) % 60);
+    cells.s.textContent = pad2(Math.floor((diff % 60000) / 1000));
+  };
+
+  const start = () => {
+    if (done || timer) return;
+    tick();
+    if (!done) timer = setInterval(tick, 1000);
+  };
+  const stop = () => {
+    clearInterval(timer);
+    timer = null;
+  };
+
+  start();
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) stop();
+    else start();
+  });
+}
+
 /* --------------------------- Copy button ------------------------- */
 function bindCopy(scope = document) {
   $$(".copy-btn", scope).forEach((btn) => {
@@ -517,7 +679,7 @@ function bindCopy(scope = document) {
         ta.value = text;
         document.body.appendChild(ta);
         ta.select();
-        try { document.execCommand("copy"); toast(`Tersalin: ${text}`); } catch (_) {}
+        try { document.execCommand("copy"); toast(`Tersalin: ${text}`); } catch (_) { }
         ta.remove();
       }
     });
@@ -537,10 +699,12 @@ function init() {
   initNav();
   renderMarquee();
   renderStats();
+  renderCountdown();
   renderEvent();
   renderRoadmap();
   renderOS();
   renderExtensions();
+  renderVideos();
   renderChecklist();
   renderFaq();
   renderFooter();
