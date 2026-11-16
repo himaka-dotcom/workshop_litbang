@@ -77,60 +77,60 @@ const CONTENT = {
     {
       id: "vscode-windows",
       title: "Cara install Visual Studio Code",
-      tagline: "Unduh Installer, centang Add to Path, selesai",
+      tagline: "Unduh installer, centang Add to PATH, lalu Finish.",
       badge: "Windows",
       url: "https://youtu.be/kQl8ugdcZCc?si=DTVtWfmDhAdK2yyE"
     },
     {
       id: "git",
       title: "Cara install git dan git bash",
-      tagline: "Unduh Installer, centang Add to Path, selesai",
+      tagline: "Unduh Git for Windows, ikuti installer, Git Bash ikut terpasang.",
       badge: "Windows",
       url: "https://youtu.be/IigslfdR7vI?si=Ags49yfyy4Y3fwNo"
     },
     {
       id: "github",
       title: "Cara buat akun github",
-      tagline: "Unduh Installer, centang Add to Path, selesai",
+      tagline: "Daftar dengan email, verifikasi, lalu pilih paket Free.",
       badge: "Windows",
       url: "https://youtu.be/HuoAiLFIXSg?si=y6Bg2wfxAnLL3ucu"
     },
     {
       id: "live-server",
       title: "Cara install ekstensi Live Server",
-      tagline: "Unduh Installer, centang Add to Path, selesai",
+      tagline: "Buka Extensions, cari Live Server, klik Install.",
       badge: "Windows",
       url: "https://youtu.be/G52TZnx11I4?si=AI7qeltH5OoUmpN8"
     },
     {
       id: "prettier",
       title: "Cara install ekstensi Prettier",
-      tagline: "Unduh Installer, centang Add to Path, selesai",
+      tagline: "Cari Prettier, Install, lalu aktifkan Format On Save.",
       badge: "Windows",
       url: "https://youtu.be/a7gPBnmRUTI?si=SVAAnZDEFw5mzTXg"
     }, {
       id: "eror-lens",
       title: "Cara install ekstensi Error Lens",
-      tagline: "Unduh Installer, centang Add to Path, selesai",
+      tagline: "Cari Error Lens di Extensions, klik Install.",
       badge: "All Device",
       url: "https://youtu.be/szR4QsHkdFY?si=CICcCgI4uW6i4src"
     }, {
       id: "material-icons",
       title: "Cara install ekstensi Material Icon",
-      tagline: "Unduh Installer, centang Add to Path, selesai",
+      tagline: "Cari Material Icon Theme, Install, pilih tema ikonnya.",
       badge: "All Device",
       url: "https://youtu.be/p_lmSfrpGW8?si=qFylECFxi6MvxIsu"
     }, {
       id: "git-lens",
       title: "Cara install ekstensi Git Lens",
-      tagline: "Unduh Installer, centang Add to Path, selesai",
+      tagline: "Cari GitLens di Extensions, klik Install.",
       badge: "All Device",
       url: "https://youtu.be/UQPb73Zz9qk?si=9x2v3R0YODA5WI2h"
     },
     {
       id: "lagu-fav-admin",
       title: "About You",
-      tagline: "Lagu Fav admin, kalau lagu fav kamu apa?",
+      tagline: "Lagu favorit admin — kalau lagu favoritmu apa?",
       badge: "-",
       url: "https://youtu.be/tGv7CUutzqU?si=1a-n2QYbqu_L2gXz"
     }
