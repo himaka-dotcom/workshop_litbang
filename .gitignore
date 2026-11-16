@@ -1,0 +1,67 @@
+# =========================================================================
+# .gitignore — Web Workshop Himaka
+# File yang tidak boleh ikut di-push ke GitHub.
+# =========================================================================
+
+# -------------------------------------------------------------------------
+# Workshop 2 (masih WIP / belum siap dipublikasikan)
+# -------------------------------------------------------------------------
+# Halaman Workshop 2 yang sedang dikerjakan
+main.html
+workshop-2.html
+
+# Catatan materi & panduan Workshop 2 (dokumen kerja lokal)
+materi.md
+
+# CATATAN:
+# .gitignore hanya berlaku untuk file yang BELUM pernah di-track Git.
+# workshop-2.html sudah pernah di-commit, jadi tetap akan ikut ter-push.
+# Kalau memang tidak ingin di-push lagi, jalankan sekali:
+#   git rm --cached workshop-2.html
+# (file tetap ada di laptop, hanya dihentikan dari pelacakan Git)
+
+# -------------------------------------------------------------------------
+# Bahan presentasi / dokumen lokal (bukan bagian dari website)
+# -------------------------------------------------------------------------
+*.pptx
+*.docx
+*.pdf
+*.zip
+
+# -------------------------------------------------------------------------
+# Dependensi & hasil build
+# -------------------------------------------------------------------------
+node_modules/
+dist/
+build/
+.cache/
+*.tsbuildinfo
+
+# -------------------------------------------------------------------------
+# Environment / rahasia (jangan pernah di-commit)
+# -------------------------------------------------------------------------
+.env
+.env.*
+!.env.example
+
+# -------------------------------------------------------------------------
+# Editor & OS
+# -------------------------------------------------------------------------
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# -------------------------------------------------------------------------
+# Log & file sementara
+# -------------------------------------------------------------------------
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.tmp
+*.bak

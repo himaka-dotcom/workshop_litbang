@@ -129,7 +129,7 @@ body {
   display: inline-block;
   background: var(--accent);
   color: var(--accent-ink);
-  padding: 0.2 0.1em;
+  padding: 0.2em 0.1em;
   margin: 0 4px;
   border-radius:0 4px;
   box-decoration-break: clone;

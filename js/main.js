@@ -169,10 +169,14 @@ function infoCard(icon, label, value) {
     </div>`;
 }
 
+function currentEvent() {
+  return document.body.dataset.event === "workshop2" ? CONTENT.workshop2 : CONTENT.event;
+}
+
 function renderEvent() {
   const wrap = $("#event-info");
   if (!wrap) return;
-  const e = CONTENT.event;
+  const e = currentEvent();
   wrap.innerHTML = [
     infoCard("calendar", "Tanggal", e.date),
     infoCard("clock", "Waktu", e.time),
@@ -309,7 +313,7 @@ function downloadButton(url, label) {
 }
 
 /* ------- Kartu spesifik: tools (per OS) & ekstensi (flat) -------- */
-function getDonwload(tool, os) {
+function getDownload(tool, os) {
   if (tool.downloads) {
     return tool.downloads[os] || tool.downloads.windows || Object.values(tool.downloads)[0];
   }
@@ -317,7 +321,7 @@ function getDonwload(tool, os) {
 }
 
 function toolCard(tool, os) {
-  const dl = getDonwload(tool, os)
+  const dl = getDownload(tool, os)
   const body = `
     <p class="mb-4" style="color:var(--ink-soft)">${tool.why}</p>
     ${stepsBlock(tool.steps[os], { verify: tool.verify, label: `Langkah instal · ${OS_LABEL[os]}` })}
@@ -592,7 +596,8 @@ function renderCountdown() {
   const note = $("#countdown-note");
   if (!grid || !note) return;
 
-  const target = new Date(CONTENT.event.startISO);
+  const e = currentEvent();
+  const target = new Date(e.startISO);
   if (Number.isNaN(target.getTime())) return;
 
   const UNITS = [
@@ -613,7 +618,7 @@ function renderCountdown() {
         style="color:var(--muted)">${u.label}</div>
     </div>`
   ).join("");
-  note.textContent = `Menuju Workshop 1 · ${CONTENT.event.date} · ${CONTENT.event.time}`;
+  note.textContent = `Menuju ${e.label} · ${e.date} · ${e.time}`;
 
   const finish = () => {
     grid.classList.add("hidden");
@@ -625,8 +630,8 @@ function renderCountdown() {
     note.innerHTML = sameDay
       ? `<span class="font-display text-lg font-semibold" style="color:var(--accent-ink);background:var(--accent);padding:0.2em 0.5em;border-radius:8px">Hari-H sudah tiba! 🎉</span>
          <div class="mt-2">Sampai jumpa di Laboratorium Lantai 5.</div>`
-      : `<span class="font-display text-lg font-semibold" style="color:var(--ink)">Workshop 1 sudah selesai</span>
-         <div class="mt-2">Sampai jumpa di Workshop 2!</div>`;
+      : `<span class="font-display text-lg font-semibold" style="color:var(--ink)">${e.label} sudah selesai</span>
+         <div class="mt-2">${e.next ? `Sampai jumpa di ${e.next}!` : "Sampai jumpa di workshop berikutnya!"}</div>`;
   };
 
   const cells = {};
@@ -666,6 +671,37 @@ function renderCountdown() {
   });
 }
 
+/* --------------------------- Workshop 2 ------------------------- */
+
+/* --------------------------- Render: Materi Workshop 2 ------------------------- */
+function materiCard(m) {
+  const body = `
+    <p class="mb-4" style="color:var(--ink-soft)">${m.why}</p>
+    ${stepsBlock(m.topics, { label: "Yang akan dipelajari" })}
+    <div class="mt-5 p-4 rounded-[var(--radius)]" style="background:var(--surface-2);border:1.5px dashed var(--line-strong)">
+      <div class="font-mono text-[0.72rem] uppercase tracking-widest mb-1" style="color:var(--muted)">Hasil akhir</div>
+      <p class="text-sm" style="color:var(--ink-soft)">${m.output}</p>
+    </div>`; 
+  return accordionCard({
+    id: m.short,
+    icon: m.icon,
+    name: m.name || m.short,
+    badge: `Blok ${m.block}`,
+    tagline: m.tagline,
+    bodyHtml: body,
+  });
+}
+
+function renderMateri() {
+  if (!Array.isArray(CONTENT.materi) || !CONTENT.materi.length) return;
+  renderCardSection({
+    mountId: "materi-list",
+    items: CONTENT.materi,
+    buildCard: materiCard,
+  });
+}
+
+
 /* --------------------------- Copy button ------------------------- */
 function bindCopy(scope = document) {
   $$(".copy-btn", scope).forEach((btn) => {
@@ -702,6 +738,7 @@ function init() {
   renderCountdown();
   renderEvent();
   renderRoadmap();
+  renderMateri();
   renderOS();
   renderExtensions();
   renderVideos();

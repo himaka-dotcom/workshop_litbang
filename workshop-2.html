@@ -77,7 +77,7 @@
             <span class="block font-display font-bold tracking-tight text-[0.95rem]">Himpunan Mahasiswa
               Informatika</span>
             <span class="block font-mono text-[0.62rem] uppercase tracking-[0.2em]"
-              style="color:var(--muted)">Devisi
+              style="color:var(--muted)">Divisi
               Penelitian & Pengembangan</span>
           </span>
         </a>
@@ -180,12 +180,12 @@
               style="background:var(--ink);color:var(--paper)">H</span>
             <div class="leading-tight">
               <div class="font-display font-bold tracking-tight">Himpunan Mahasiswa Informatika</div>
-              <div class="font-mono text-[0.62rem] uppercase tracking-[0.2em]" style="color:var(--muted)">Devisi
+              <div class="font-mono text-[0.62rem] uppercase tracking-[0.2em]" style="color:var(--muted)">Divisi
                 Penelitian &
                 Pengembangan</div>
             </div>
           </div>
-          <p class="mt-4 text-sm" style="color:var(--ink-soft)">DIbuat untuk mempersiapkan workshop</p>
+          <p class="mt-4 text-sm" style="color:var(--ink-soft)">Dibuat untuk mempersiapkan workshop</p>
         </div>
         <div>
           <div class="font-mono text-[0.7rem] uppercase tracking-widest mb-3" style="color:var(--muted)">Navigasi</div>
@@ -219,7 +219,7 @@
   <script>
     /* ============ GANTI TANGGAL DI SINI ============
        Format: "TAHUN-BULAN-TANGGAL JAM:MINUT:DETIK+07:00" (WIB) */
-    const TARGET_DATE = new Date("2027-01-15T07:00:00+07:00");
+    const TARGET_DATE = new Date("2026-11-28T07:00:00+07:00");
 
     function updateCountdown() {
       const now = new Date();
@@ -257,6 +257,8 @@
       const meta = document.querySelector('meta[name="theme-color"]');
       if (meta) meta.setAttribute("content", theme === "dark" ? "#0e0f12" : "#f2ede2");
     };
+
+    applyTheme(document.documentElement.getAttribute("data-theme") || "light");
 
     document.getElementById("theme-toggle").addEventListener("click", () => {
       const cur = document.documentElement.getAttribute("data-theme");

@@ -57,6 +57,12 @@ const ICONS = {
     '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14c0-4 3.6-7 8-7s8 2.6 8 6.4c0 2-1.6 3.6-3.6 3.6-1.4 0-2.4-.8-3.4-.8-.9 0-1.4.5-1.4 1.4 0 1 .6 1.6.6 2.4 0 .8-.6 1.4-1.4 1.4C7.4 21 4 18 4 14Z"/><circle cx="9" cy="11" r="1"/></svg>',
   book:
     '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h11a2 2 0 0 1 2 2v14H7a2 2 0 0 1-2-2V4Z"/><path d="M5 18a2 2 0 0 1 2-2h11M9 8h6"/></svg>',
+  layout:
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4" width="19" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg>',
+  code:
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 8l-4 4 4 4M16 8l4 4-4 4M13.6 5l-3.2 14"/></svg>',
+  server:
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="7" rx="2"/><rect x="3" y="13" width="18" height="7" rx="2"/><path d="M7 7.5h.01M7 16.5h.01"/></svg>',
 };
 
 const CONTENT = {
@@ -69,7 +75,7 @@ const CONTENT = {
 
   videos: [
     {
-      id: "vscode-windowns",
+      id: "vscode-windows",
       title: "Cara install Visual Studio Code",
       tagline: "Unduh Installer, centang Add to Path, selesai",
       badge: "Windows",
@@ -91,32 +97,32 @@ const CONTENT = {
     },
     {
       id: "live-server",
-      title: "Cara install ekstension Live Server",
+      title: "Cara install ekstensi Live Server",
       tagline: "Unduh Installer, centang Add to Path, selesai",
       badge: "Windows",
       url: "https://youtu.be/G52TZnx11I4?si=AI7qeltH5OoUmpN8"
     },
     {
       id: "prettier",
-      title: "Cara install ekstension Prettier",
+      title: "Cara install ekstensi Prettier",
       tagline: "Unduh Installer, centang Add to Path, selesai",
       badge: "Windows",
       url: "https://youtu.be/a7gPBnmRUTI?si=SVAAnZDEFw5mzTXg"
     }, {
       id: "eror-lens",
-      title: "Cara install ekstension Error Lens",
+      title: "Cara install ekstensi Error Lens",
       tagline: "Unduh Installer, centang Add to Path, selesai",
       badge: "All Device",
       url: "https://youtu.be/szR4QsHkdFY?si=CICcCgI4uW6i4src"
     }, {
       id: "material-icons",
-      title: "Cara install ekstension Material Icon",
+      title: "Cara install ekstensi Material Icon",
       tagline: "Unduh Installer, centang Add to Path, selesai",
       badge: "All Device",
       url: "https://youtu.be/p_lmSfrpGW8?si=qFylECFxi6MvxIsu"
     }, {
       id: "git-lens",
-      title: "Cara install ekstension Git Lens",
+      title: "Cara install ekstensi Git Lens",
       tagline: "Unduh Installer, centang Add to Path, selesai",
       badge: "All Device",
       url: "https://youtu.be/UQPb73Zz9qk?si=9x2v3R0YODA5WI2h"
@@ -130,15 +136,108 @@ const CONTENT = {
     }
   ],
 
+  materi: [{
+    block: "01",
+    short: "frontend",
+    name: "Frontend",
+    icon: "layout",
+    duration: "±90 menit",
+    tagline: "Tampilan aplikasi: yang akan dilihat oleh pengguna dan disentuh",
+    why: "Frontend adalah pekerjaan membuat tampilan yang dipakai pengguna. Dimulai dari kerangka HTML, lalu memberikannya tampilan yang rapi lewat CSS. Di akhir sesi kamu punya satu halaman web utuh yang bisa langsung dibuka di browser.",
+    topics: [
+      "Peran frontend: apa saja yang dikerjakan orang frontend",
+      "Struktur HTML: tag, atribut, dan cara membuat elemen",
+      "HTML semantik: header, nav, section, dan footer",
+      "CSS dasar: selector, warna, tipografi, dan border",
+      "Layout modern: Flexbox dan CSS Grid",
+      "Membangun landing page sendiri dari nol",
+      "Menyesuaikan tampilan supaya tetap nyaman dibuka di HP"
+    ],
+    output: "Satu halaman landing page pribadi — profil atau portofolio sederhana — yang rapi dan enak dibuka di HP.",
+    games: ["html", "color"]
+  },
+  {
+    block: "02",
+    short: "JavaScript",
+    icon: "code",
+    name: "JavaScript",
+    duration: "±120 menit",
+    tagline: "Otak yang membuat halaman bereaksi saat diklik.",
+    why: "Tanpa JavaScript, halaman web cuma gambar diam. JavaScript membuatnya bisa bereaksi: tombol ditekan, angka naik, data muncul. Sesi ini adalah jantung dari Workshop 2.",
+    topics: [
+      "Peran JavaScript: halaman statis vs halaman interaktif",
+      "Variabel, tipe data, dan operator",
+      "Percabangan: if, else, dan switch",
+      "Perulangan: for dan while, serta cara memakai array",
+      "Fungsi: menulis logika yang bisa dipakai ulang",
+      "DOM: querySelector, event listener, dan mengubah isi halaman",
+      "fetch: mengambil data dari server tanpa reload",
+      "Debugging: membaca pesan error di console browser"
+    ],
+    output: "Tombol interaktif, kuis atau hitung mundur sederhana, dan notifikasi yang muncul tanpa reload halaman.",
+    games: ["guess", "code"]
+  },
+  {
+    block: "03",
+    short: "Backend",
+    icon: "server",
+    name: "Backend — Node.js & Express",
+    duration: "±90 menit",
+    tagline: "Di balik layar: server, API, dan penyimpanan data.",
+    why: "Backend adalah pekerjaan di belakang layar yang tidak terlihat, tapi menentukan semuanya: data halaman datang dari mana, siapa yang boleh mengubahnya, dan datanya disimpan di mana.",
+    topics: [
+      "Peran backend dan alur request sampai response",
+      "Node.js: cara menjalankan JavaScript di server",
+      "Express: membuat server pertama dalam beberapa baris kode",
+      "Routing: menerima permintaan GET, POST, dan DELETE",
+      "Mengirim dan membaca data dalam format JSON",
+      "Menyimpan data sederhana dengan array dan berkas JSON",
+      "Menyambungkan frontend ke backend lewat fetch",
+      "Deploy: menaruh kode ke internet supaya bisa dibuka teman"
+    ],
+    output: "Satu server API sederhana, lalu frontend dari Blok 1–2 tersambung ke sana sampai benar-benar hidup.",
+    games: ["api", "status"]
+  }
+  ],
+
+  /* Data kartu mini game */
+  games: {
+    html: { title: "Susun Tag Html", subtitle: "urutkan tag", icon: "code" },
+    color: { title: "Tebak Warna", subtitle: "Tebak kode hex", icon: "paint" },
+    guess: { title: "Tebak Angka", subtitle: "1–100 · 7 tebakan", icon: "target" },
+    code: { title: "Tebak Output Kode", subtitle: "Baca baris js", icon: "terminal" },
+    api: { title: "Simulasi API", subtitle: "kirim request", icon: "server" },
+    status: { title: "Kuis Status Code", subtitle: "kode http", icon: "bolt" }
+  },
+
+  /* ----------------------------------------------------------------
+   DATA MINI GAME — semua teks biasa, aman diedit panitia
+   ---------------------------------------------------------------- */
+  htmlTags: [
+    '<!DOCTYPE html>',
+    '<html lang="id">',
+    '<head>',
+    '<meta charset="UTF-8">',
+    '<title>Dokumentasi</title>',
+    '</head>',
+    '<body>',
+    '<h1>Halo, Himaka!</h1>',
+    '<p>Misi kedua: belajar JavaScript.</p>',
+    '</body>',
+    '</html>'
+  ],
+
   event: {
+    label: "Workshop 1",
+    next: "Workshop 2",
     kicker: "Workshop Maba 2026",
     title: "Ngoding Pertama",
     titleAccent: "Pertama",
     tagline:
       "Siapkan laptopmu sebelum hari-H. Panduan singkat, checklist berprogres, dan sedikit main — biar workshop lancar, bukan molor.",
-    date: "Sabtu, 14 November 2026",
+    date: "Sabtu, 28 November 2026",
     time: "07.00 – 12.00 WIB",
-    startISO: "2026-11-14T07:00:00+07:00", // WIB — dipakai countdown hari-H
+    startISO: "2026-11-28T07:00:00+07:00", // WIB — dipakai countdown hari-H
     place: "Laboratorium Lantai 5, Gedung Rektorat",
     bring: [
       "Laptop + charger",
@@ -147,8 +246,32 @@ const CONTENT = {
       "Alat Tulis",
     ],
     contacts: [
-      { name: "Robit", role: "Kepala Devisi", wa: "+62 812-0000-0000" },
-      { name: "Novia", role: " Sekertaris Panitia", wa: "+62 813-1111-1111" },
+      { name: "Ahmad Robith Zahrul Umami", role: "Kepala Divisi", wa: "+62 895-0984-7216" },
+      { name: "Gio Vani", role: "Ketua Panitia", wa: "+62 823-3871-9538" },
+    ],
+  },
+
+  workshop2: {
+    label: "Workshop 2",
+    next: null,
+    kicker: "Workshop Maba 2026",
+    title: "Ngoding Kedua",
+    titleAccent: "Kedua",
+    tagline:
+      "Misi kedua: kenalan sama JavaScript, lalu bikin halaman web yang bisa bereaksi saat diklik.",
+    date: "Sabtu, 28 November 2026",
+    time: "07.00 – 12.00 WIB",
+    startISO: "2026-11-28T07:00:00+07:00", // WIB — dipakai countdown hari-H
+    place: "Laboratorium Lantai 5, Gedung Rektorat",
+    bring: [
+      "Laptop + charger",
+      "Headset atau earphone (Opsional)",
+      "Kuota internet",
+      "Alat Tulis",
+    ],
+    contacts: [
+      { name: "Ahmad Robith Zahrul Umami", role: "Kepala Divisi", wa: "+62 895-0984-7216" },
+      { name: "Gio Vani", role: "Ketua Panitia", wa: "+62 823-3871-9538" },
     ],
   },
 
@@ -161,8 +284,7 @@ const CONTENT = {
   marquee: [
     "Coding",
     "Workshop 1",
-    "Himpunan Mahasiswa Informatika",
-    ""
+    "Himpunan Mahasiswa Informatika"
   ],
 
   roadmap: [
@@ -178,8 +300,8 @@ const CONTENT = {
     },
     {
       step: "03",
-      title: "Install Ekstension Yang Diperlukan (Opsional)",
-      text: "Ekstension digunakan untuk mempermudah kamu dalam melakukan coding",
+      title: "Install Ekstensi Yang Diperlukan (Opsional)",
+      text: "Ekstensi digunakan untuk mempermudah kamu dalam melakukan coding",
     },
     {
       step: "04",
