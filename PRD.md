@@ -1,6 +1,6 @@
 # PRD – Web Persiapan Workshop Maba
 
-**Divisi Penelitian dan Pengembangan (Litbang) – Himpunan Mahasiswa Informatika** Versi 0.1 · Penyusun: Ilham · Status: Draft
+**Divisi Penelitian dan Pengembangan (Litbang) – Himpunan Mahasiswa Teknik Informatika** Versi 0.1 · Penyusun: Ilham · Status: Draft
 
 ## 1. Ringkasan
 

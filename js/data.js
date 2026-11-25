@@ -68,7 +68,7 @@ const ICONS = {
 const CONTENT = {
   site: {
     shortName: "Himaka",
-    org: "Himpunan Mahasiswa Informatika",
+    org: "Himpunan Mahasiswa Teknik Informatika",
     division: "Divisi Penelitian & Pengembangan",
     year: "2026/2027",
   },
@@ -238,7 +238,7 @@ const CONTENT = {
     date: "Sabtu, 28 November 2026",
     time: "07.00 – 12.00 WIB",
     startISO: "2026-11-28T07:00:00+07:00", // WIB — dipakai countdown hari-H
-    place: "Laboratorium Lantai 5, Gedung Rektorat",
+    place: "Ruang kelas 403 dan 404",
     bring: [
       "Laptop + charger",
       "Headset atau earphone (Opsional)",
@@ -262,7 +262,7 @@ const CONTENT = {
     date: "Sabtu, 28 November 2026",
     time: "07.00 – 12.00 WIB",
     startISO: "2026-11-28T07:00:00+07:00", // WIB — dipakai countdown hari-H
-    place: "Laboratorium Lantai 5, Gedung Rektorat",
+    place: "Ruang kelas 403 dan 404",
     bring: [
       "Laptop + charger",
       "Headset atau earphone (Opsional)",
@@ -284,7 +284,7 @@ const CONTENT = {
   marquee: [
     "Coding",
     "Workshop 1",
-    "Himpunan Mahasiswa Informatika"
+    "Himpunan Mahasiswa Teknik Informatika"
   ],
 
   roadmap: [
@@ -437,7 +437,7 @@ const CONTENT = {
       steps: {
         windows: [
           "Buka github.com/signup.",
-          "Isi email kampus, kata sandi kuat, dan username (pakai namamu).",
+          "Isi email kamu, kata sandi kuat, dan username (pakai namamu).",
           "Verifikasi email, lalu pilih paket gratis (Free).",
         ],
         macos: [
@@ -447,7 +447,7 @@ const CONTENT = {
         ],
         linux: [
           "Buka github.com/signup dari browser.",
-          "Daftar dengan email kampus.",
+          "Daftar dengan email kamu.",
           "Aktifkan autentikasi dua langkah (2FA) untuk keamanan.",
         ],
       },
@@ -598,7 +598,7 @@ const CONTENT = {
     { id: "vscode", label: "VS Code sudah terpasang", hint: "Cek: code --version" },
     { id: "browser", label: "Browser modern terpasang", hint: "Chrome atau Firefox versi terbaru." },
     { id: "git", label: "Git sudah terpasang", hint: "Cek: git --version" },
-    { id: "github", label: "Akun GitHub sudah dibuat", hint: "Gunakan email kampus." },
+    { id: "github", label: "Akun GitHub sudah dibuat", hint: "Gunakan email kamu." },
     { id: "terminal", label: "Tahu cara membuka terminal", hint: "Windows: PowerShell · macOS/Linux: Terminal." },
     { id: "folder", label: "Folder kerja sudah dibuat", hint: "Misal: Documents/workshop" },
     { id: "internet", label: "Koneksi internet siap", hint: "Siapkan tethering cadangan." },
